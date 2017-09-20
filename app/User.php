@@ -18,8 +18,30 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $fillable = [
-        'name', 'email',
+        'first_name',
+        'last_name',
+        'email',
+        'username',
+        'birth_date',
+        'avatar',
     ];
+
+    /**
+    * Get the points received.
+    */
+    public function pointReciver()
+    {
+        return $this->belongsTo('App\Point', 'id', 'receiver_id');
+    };
+
+    /**
+    * Get the points givered.
+    */
+
+    public function pointGiver()
+    {
+        return $this->belongsTo('App\Point', 'id', 'giver_id');
+    };
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -28,5 +50,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     protected $hidden = [
         'password',
+        'is_superadmin',
     ];
 }
