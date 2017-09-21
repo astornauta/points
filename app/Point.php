@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Point extends Model
 {
-        /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -19,18 +19,17 @@ class Point extends Model
     ];
 
     /**
-    * Get the points received.
+    * Get the user who received the points.
     */
-    public function userReciver()
+    public function receiver()
     {
         return $this->belongsTo('App\User', 'receiver_id', 'id');
     };
 
     /**
-    * Get the points givered.
+    * Get the user who gived the points.
     */
-
-    public function userGiver()
+    public function giver()
     {
         return $this->belongsTo('App\User', 'giver_id', 'id');
     };

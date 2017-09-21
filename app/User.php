@@ -27,20 +27,19 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     ];
 
     /**
-    * Get the points received.
+    * Get received points.
     */
-    public function pointReciver()
+    public function receivedPoints()
     {
-        return $this->belongsTo('App\Point', 'id', 'receiver_id');
+        return $this->hasMany('App\Point', 'receiver_id', 'id');
     };
 
     /**
-    * Get the points givered.
+    * Get given points.
     */
-
-    public function pointGiver()
+    public function givenPoints()
     {
-        return $this->belongsTo('App\Point', 'id', 'giver_id');
+        return $this->hasMany('App\Point', 'receiver_id', 'id');
     };
 
     /**
