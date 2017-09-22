@@ -32,7 +32,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function receivedPoints()
     {
         return $this->hasMany('App\Point', 'receiver_id', 'id');
-    };
+    }
 
     /**
     * Get given points.
@@ -40,7 +40,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function givenPoints()
     {
         return $this->hasMany('App\Point', 'receiver_id', 'id');
-    };
+    }
 
     /**
      * The attributes excluded from the model's JSON form.
