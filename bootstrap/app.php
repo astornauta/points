@@ -82,6 +82,9 @@ $app->singleton(
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
+// Custom
+$app->register(Dingo\Api\Provider\LumenServiceProvider::class);
+
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes
