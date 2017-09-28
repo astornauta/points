@@ -1,5 +1,11 @@
 <?php
 
+$api = app('Dingo\Api\Routing\Router');
+
+header('Access-Control-Allow-Origin:  *');
+header('Access-Control-Allow-Methods:  POST, GET, OPTIONS, PUT, DELETE');
+header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Origin, Authorization');
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -11,12 +17,13 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
+$api->version('v1', function ($api) {
+    // $api->get('/', function () use ($router) {
+    //     return $router->app->version();
+    // });
+    $api->get('users', 'App\Http\Controllers\UserController@index');
+    $api->post('users', 'App\Http\Controllers\UserController@store');
+    $api->get('users/{id}', 'App\Http\Controllers\UserController@show');
+    $api->put('users/{id}', 'App\Http\Controllers\UserController@update');
+    $api->delete('users/{id}', 'App\Http\Controllers\UserController@delete');
 });
-
-$router->get('users', 'UserController@index');
-$router->post('users', 'UserController@store');
-$router->get('users/{id}', 'UserController@show');
-$router->put('users/{id}', 'UserController@update');
-$router->delete('users/{id}', 'UserController@delete');
