@@ -26,4 +26,10 @@ $api->version('v1', function ($api) {
     $api->get('users/{id}', 'App\Http\Controllers\UserController@show');
     $api->put('users/{id}', 'App\Http\Controllers\UserController@update');
     $api->delete('users/{id}', 'App\Http\Controllers\UserController@delete');
+
+    $api->get('points', 'App\Http\Controllers\PointController@index');
+    $api->post('points', 'App\Http\Controllers\PointController@store');
+    $api->get('points/{id}', 'App\Http\Controllers\PointController@show');
+    $api->put('points/{id}', 'App\Http\Controllers\PointController@update');
+    $api->delete('points/{id}', 'App\Http\Controllers\PointController@delete');
 });
