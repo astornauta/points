@@ -36,7 +36,7 @@ class UserController extends Controller
         return response()->json($user, 202);
     }
 
-    // Delete specific user
+    // Delete specific user
     public function delete($id)
     {
         $user  = User::destroy($id);
