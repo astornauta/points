@@ -24,7 +24,7 @@ class Point extends Model
     public function receiver()
     {
         return $this->belongsTo('App\User', 'receiver_id', 'id');
-    };
+    }
 
     /**
     * Get the user who gived the points.
@@ -32,5 +32,5 @@ class Point extends Model
     public function giver()
     {
         return $this->belongsTo('App\User', 'giver_id', 'id');
-    };
+    }
 }
