@@ -17,6 +17,15 @@ class UserController extends Controller
     // Store new user
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|max:255|confirmed',
+            'username' => 'required|max:255|unique:users',
+            'birth_date' => 'required|date|date_format:Y-m-d',
+            'avatar' => '',
+        ]);
         $user = User::create($request->all());
         return response()->json($user, 201);
     }
@@ -31,6 +40,15 @@ class UserController extends Controller
     // Update specific user
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users,email,'.$id,
+            'password' => 'required|max:255|confirmed',
+            'username' => 'required|max:255|unique:users,username,'.$id,
+            'birth_date' => 'required|date|date_format:Y-m-d',
+            'avatar' => '',
+        ]);
         $user = User::findOrFail($id);
         $user->update($request->all());
         return response()->json($user, 202);

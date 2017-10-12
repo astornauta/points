@@ -21,6 +21,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'first_name',
         'last_name',
         'email',
+        'password',
         'username',
         'birth_date',
         'avatar',
@@ -49,6 +50,5 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     protected $hidden = [
         'password',
-        'is_superadmin',
     ];
 }
