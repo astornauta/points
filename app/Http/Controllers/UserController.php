@@ -60,4 +60,20 @@ class UserController extends Controller
         $user  = User::destroy($id);
         return response()->json(204);
     }
+
+    public function showUsersReceivedPoints(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $points = $user->receivedPoints()->get();
+
+        return response()->json($points, 200);
+    }
+
+    public function showUsersGivenPoints(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $points = $user->givenPoints()->get();
+
+        return response()->json($points, 200);
+    }
 }
