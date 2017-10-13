@@ -40,7 +40,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     */
     public function givenPoints()
     {
-        return $this->hasMany('App\Point', 'receiver_id', 'id');
+        return $this->hasMany('App\Point', 'giver_id', 'id');
     }
 
     /**
