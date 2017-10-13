@@ -17,6 +17,12 @@ class PointController extends Controller
     // Store new point
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'giver_id' => 'required',
+            'receiver_id' => 'required|different:giver_id',
+            'quantity' => 'required|min:0|max:10',
+            'reason' => 'max:255',
+        ]);
         $point = Point::create($request->all());
         return response()->json($point, 201);
     }
@@ -31,6 +37,12 @@ class PointController extends Controller
     // Update specific point
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'giver_id' => 'required',
+            'receiver_id' => 'required|different:giver_id',
+            'quantity' => 'required|min:0|max:10',
+            'reason' => 'max:255',
+        ]);
         $point = Point::findOrFail($id);
         $point->update($request->all());
         return response()->json($point, 202);
